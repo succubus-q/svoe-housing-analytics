@@ -2,7 +2,8 @@
 param(
     [string]$Specification = 'assets/competition/presentation/deck-spec.json',
     [string]$Destination = '.work/presentation/candidate.pptx',
-    [string]$PreviewDirectory = '.work/presentation/previews'
+    [string]$PreviewDirectory = '.work/presentation/previews',
+    [string]$PdfDestination = '.work/presentation/candidate.pdf'
 )
 
 $ErrorActionPreference = 'Stop'
@@ -47,6 +48,12 @@ $fitIssues = [System.Collections.Generic.List[object]]::new()
 try {
     $app = New-Object -ComObject PowerPoint.Application
     $startedWithNoDocuments = $app.Presentations.Count -eq 0
+    if ($spec.sourcePresentation) {
+        $masterPath = [System.IO.Path]::GetFullPath((Join-Path $projectRoot $spec.sourcePresentation))
+        if ($masterPath -eq $outputPath) { throw 'Destination must differ from the editable source presentation' }
+        $deck = $app.Presentations.Open($masterPath, -1, 0, 0)
+        if ($deck.Slides.Count -ne $spec.slides.Count) { throw 'Editable presentation and specification have different slide counts' }
+    } else {
     $deck = $app.Presentations.Add(0)
     $deck.PageSetup.SlideWidth = $spec.slideWidth
     $deck.PageSetup.SlideHeight = $spec.slideHeight
@@ -115,6 +122,9 @@ try {
         }
         if ($null -eq $body) { throw "Missing notes placeholder: slide $($slide.SlideIndex)" }
         $body.TextFrame.TextRange.Text = $slideSpec.notes
+    }
+    }
+    foreach ($slide in $deck.Slides) {
         foreach ($shape in $slide.Shapes) {
             if ($shape.HasTextFrame -eq -1 -and $shape.TextFrame.HasText -eq -1) {
                 $boundH = $shape.TextFrame.TextRange.BoundHeight
@@ -128,10 +138,15 @@ try {
     $deck.SaveAs($outputPath, 24)
     $deck.Close()
     $deck = $app.Presentations.Open($outputPath, -1, 0, 0)
-    if ($deck.Slides.Count -ne 9) { throw 'Unexpected slide count after reopening' }
+    if ($deck.Slides.Count -ne $spec.slides.Count) { throw 'Unexpected slide count after reopening' }
     for ($i = 1; $i -le $deck.Slides.Count; $i++) {
         $png = Join-Path $previewPath ('slide-{0:00}.png' -f $i)
         $deck.Slides.Item($i).Export($png, 'PNG', 1600, 900)
+    }
+    if ($PdfDestination) {
+        $pdfPath = [System.IO.Path]::GetFullPath((Join-Path $projectRoot $PdfDestination))
+        [void][System.IO.Directory]::CreateDirectory([System.IO.Path]::GetDirectoryName($pdfPath))
+        $deck.SaveAs($pdfPath, 32)
     }
     $report = [ordered]@{ application='Microsoft PowerPoint'; version=$app.Version; slides=$deck.Slides.Count; reopened=$true; renderedSlides=$deck.Slides.Count; textFitIssues=@($fitIssues.ToArray()) }
     [System.IO.File]::WriteAllText((Join-Path $projectRoot '.work/presentation/powerpoint-check.json'), ($report | ConvertTo-Json -Depth 8), [System.Text.UTF8Encoding]::new($false))

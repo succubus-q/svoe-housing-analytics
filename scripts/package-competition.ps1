@@ -21,6 +21,8 @@ $required = @(
     'docs/competition/README.md', 'docs/competition/testing.md',
     'docs/competition/submission-checklist.md', 'docs/competition/presentation-content.md',
     'docs/competition/defense-script.md', 'docs/competition/defense-questions.md',
+    'assets/competition/presentation/svoe-housing-competition.pptx',
+    'assets/competition/presentation/svoe-housing-competition.pdf',
     'assets/competition/diagrams/architecture.mmd', 'assets/competition/diagrams/data-flow.mmd',
     'assets/competition/diagrams/synchronization.mmd', 'assets/competition/diagrams/concurrent-sync.mmd'
 )
@@ -98,7 +100,7 @@ svoe-housing-competition-source.zip — исходники, миграции, Do
 документация конкурса, Mermaid-диаграммы и curated evidence. Для запуска распакуйте
 ZIP в отдельную папку и следуйте README.md. Для защиты начните с docs/competition/README.md.
 
-presentation-content.txt — девять слайдов и заметки докладчика.
+presentation-content.txt — одиннадцать слайдов и заметки докладчика.
 defense-script.txt — речь примерно на 5–7 минут.
 defense-questions.txt — 36 вопросов и ответов.
 Это UTF-8 текст с Markdown-разметкой. Относительные ссылки в этих текстах
@@ -108,8 +110,9 @@ archive-manifest.json содержит каждый путь ZIP, размер �
 archive-verification.json фиксирует проверку запрещённых путей, обязательных файлов
 и совпадение хеша каждого entry с исходным файлом.
 
-Презентация PPTX из девяти слайдов находится в svoe-housing-competition.pptx,
+Презентация PPTX из одиннадцати слайдов находится в svoe-housing-competition.pptx,
 а также в assets/competition/presentation внутри ZIP. Все слайды визуально проверены.
+Версия PDF находится рядом с PPTX и содержит те же одиннадцать слайдов.
 Скриншот dashboard включён в assets/competition/screenshots и презентацию.
 Документация по запуску и структуре проекта находится внутри ZIP.
 Продуктовый код и подтверждённые ID ЦБ при подготовке комплекта не менялись.

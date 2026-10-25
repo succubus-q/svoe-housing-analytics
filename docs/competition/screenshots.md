@@ -11,3 +11,8 @@ YoY объёма выдач, графики и выгрузка CSV. Полны�
 [localhost:3001/docs](http://localhost:3001/docs).
 
 Результаты первичной и повторной загрузки приведены отдельно в [testing](testing.md).
+
+## Экраны в презентации
+
+- [Показатели и фильтры](../../assets/competition/screenshots/02-dashboard-overview.png) — слайд 6.
+- [Графики, месячная таблица и CSV](../../assets/competition/screenshots/03-dashboard-table.png) — слайд 7.

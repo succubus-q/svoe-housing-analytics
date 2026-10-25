@@ -6,7 +6,8 @@ Docker Compose, тесты, сохранённые ответы ЦБ и конк
 | Материал             | Путь                                                          |
 | -------------------- | ------------------------------------------------------------- |
 | Документация         | docs/competition/README.md                                    |
-| Презентация          | assets/competition/presentation/svoe-housing-competition.pptx |
+| Презентация PPTX     | assets/competition/presentation/svoe-housing-competition.pptx |
+| Версия PDF           | assets/competition/presentation/svoe-housing-competition.pdf  |
 | Скриншот интерфейса  | assets/competition/screenshots/01-dashboard-rf.png            |
 | Диаграммы            | assets/competition/diagrams/                                  |
 | Спецификация слайдов | assets/competition/presentation/deck-spec.json                |
@@ -22,8 +23,8 @@ powershell -NoProfile -File scripts/package-competition.ps1
 Упаковщик проверяет состав, обязательные файлы, локальные ссылки и SHA-256.
 Локальные настройки, зависимости, runtime-данные и кэши в поставку не входят.
 
-Презентация содержит девять слайдов, заметки докладчика, редактируемые схемы
-и таблицы. Слайд 6 показывает работающий dashboard. Каждый слайд проверен
+Презентация содержит одиннадцать слайдов, заметки докладчика, редактируемые схемы
+и таблицы. Слайды 6 и 7 показывают два экрана работающего dashboard. Каждый слайд проверен
 по экспорту Microsoft PowerPoint.
 
 Результаты первого и повторного импорта зафиксированы в [финальном ревью](../final-review.md).

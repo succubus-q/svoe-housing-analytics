@@ -41,19 +41,19 @@
 Исходники `src/`, `frontend/src/`, Prisma-модели и подтверждённые ID не изменялись.
 Логи команд сохранены как UTF-8 в `docs/competition/evidence/`.
 
-| Команда / проверка                       | Фактический результат                                               | Доказательство                         |
-| ---------------------------------------- | ------------------------------------------------------------------- | -------------------------------------- |
-| npm run typecheck                        | Exit 0                                                              | [Лог](evidence/typecheck.txt)          |
-| npm run lint                             | Exit 0                                                              | [Лог](evidence/lint.txt)               |
-| npm test                                 | 14 passed, 0 failed                                                 | [Лог](evidence/unit.txt)               |
-| npm run test:integration                 | 9 passed, 0 failed                                                  | [Лог](evidence/integration.txt)        |
-| npm run build                            | TypeScript + frontend production build, exit 0                      | [Лог](evidence/build.txt)              |
-| npm run format:check                     | Exit 0, все поддерживаемые файлы отформатированы                    | [Лог](evidence/format-check.txt)       |
-| npm run smoke -- --sync                  | SUCCESS, конкурентный POST вернул 409                               | [Лог](evidence/smoke.txt)              |
-| docker compose ps                        | Три сервиса running, backend и PostgreSQL healthy                   | [Состояние](evidence/compose.txt)      |
-| SELECT count и GROUP BY HAVING count > 1 | 480 наблюдений, 0 групп дублей                                      | [SQL-результат](evidence/database.txt) |
-| GET /docs и Swagger JS                   | Результаты HTTP-проверки в manifest                                 | [HTTP](evidence/http.json)             |
-| node scripts/verify-competition.mjs      | Проверка структуры, ссылок, 9 слайдов, ≥25 ответов и Mermaid source | [Лог](evidence/documents.txt)          |
+| Команда / проверка                       | Фактический результат                                                | Доказательство                         |
+| ---------------------------------------- | -------------------------------------------------------------------- | -------------------------------------- |
+| npm run typecheck                        | Exit 0                                                               | [Лог](evidence/typecheck.txt)          |
+| npm run lint                             | Exit 0                                                               | [Лог](evidence/lint.txt)               |
+| npm test                                 | 14 passed, 0 failed                                                  | [Лог](evidence/unit.txt)               |
+| npm run test:integration                 | 9 passed, 0 failed                                                   | [Лог](evidence/integration.txt)        |
+| npm run build                            | TypeScript + frontend production build, exit 0                       | [Лог](evidence/build.txt)              |
+| npm run format:check                     | Exit 0, все поддерживаемые файлы отформатированы                     | [Лог](evidence/format-check.txt)       |
+| npm run smoke -- --sync                  | SUCCESS, конкурентный POST вернул 409                                | [Лог](evidence/smoke.txt)              |
+| docker compose ps                        | Три сервиса running, backend и PostgreSQL healthy                    | [Состояние](evidence/compose.txt)      |
+| SELECT count и GROUP BY HAVING count > 1 | 480 наблюдений, 0 групп дублей                                       | [SQL-результат](evidence/database.txt) |
+| GET /docs и Swagger JS                   | Результаты HTTP-проверки в manifest                                  | [HTTP](evidence/http.json)             |
+| node scripts/verify-competition.mjs      | Проверка структуры, ссылок, 11 слайдов, ≥25 ответов и Mermaid source | [Лог](evidence/documents.txt)          |
 
 В текущем живом smoke повторный импорт вернул Received=1280, Inserted=0,
 Updated=0, Skipped=1280, status=SUCCESS. SyncLog ID:
@@ -96,3 +96,12 @@ Build и HTTP smoke не доказывают визуальную коррек�
 и согласованность source, но не рендеринг. Проверка ZIP подтверждает состав,
 контрольные суммы и исключения, но не заменяет запуск на чистой машине.
 Метрики покрытия тестами в процентах и нагрузочная производительность не измерялись.
+
+## Проверка презентации · 25.10.2026
+
+PPTX и PDF синхронизированы с авторской версией из 11 слайдов. Сохранены
+оформление, сведения об авторе, две страницы интерфейса и итоговые формулировки.
+Сверка PNG-экспорта подтвердила полное визуальное совпадение десяти слайдов.
+На слайде 8 исправлена только подпись о доступности YoY в интерфейсе.
+Структура PPTX, геометрия и три редактируемые таблицы прошли проверку.
+Повторный экспорт в PowerPoint сохраняет авторский PPTX как основной источник.

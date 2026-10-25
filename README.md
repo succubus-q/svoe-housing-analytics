@@ -15,7 +15,7 @@ Swagger и Docker Compose.
 
 - [Architecture](docs/competition/architecture.md) — модули, поток данных и Mermaid-диаграммы.
 - [Testing](docs/competition/testing.md) — подтверждённые результаты и повторные проверки.
-- [Presentation](docs/competition/presentation-content.md) — девять слайдов и заметки докладчика.
+- [Presentation](docs/competition/presentation-content.md) — одиннадцать слайдов и заметки докладчика.
 - [Submission checklist](docs/competition/submission-checklist.md) — состав поставки и проверки.
 
 ## Быстрый запуск всего MVP

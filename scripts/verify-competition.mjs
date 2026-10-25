@@ -40,7 +40,11 @@ for (const file of files) {
   }
 }
 const slides = await readFile(path.join(directory, 'presentation-content.md'), 'utf8');
-assert.equal([...slides.matchAll(/^## Слайд \d+\./gm)].length, 9);
+const specification = JSON.parse(
+  await readFile(path.join(root, 'assets/competition/presentation/deck-spec.json'), 'utf8'),
+);
+const slideCount = specification.slides.length;
+assert.equal([...slides.matchAll(/^## Слайд \d+\./gm)].length, slideCount);
 const questions = await readFile(path.join(directory, 'defense-questions.md'), 'utf8');
 assert.ok([...questions.matchAll(/^## \d+\./gm)].length >= 25);
 const architecture = await readFile(path.join(directory, 'architecture.md'), 'utf8');
@@ -59,7 +63,7 @@ for (const name of ['architecture', 'data-flow', 'synchronization', 'concurrent-
   assert.ok((await stat(path.join(root, `assets/competition/diagrams/${name}.mmd`))).size > 100);
 }
 console.log(
-  `Competition documents OK: ${required.length} required files, 9 slides, >=25 answers, ${links} local links, 4 Mermaid sources.`,
+  `Competition documents OK: ${required.length} required files, ${slideCount} slides, >=25 answers, ${links} local links, 4 Mermaid sources.`,
 );
 console.log(
   'Mermaid source consistency checked. Rendering, screenshot capture and binary presentation export are not covered.',
