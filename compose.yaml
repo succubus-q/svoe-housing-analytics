@@ -1,0 +1,67 @@
+name: svoe-housing
+services:
+  backend:
+    build:
+      context: .
+      target: backend
+    environment:
+      DATABASE_URL: postgresql://housing:${POSTGRES_PASSWORD:-housing_local}@postgres:5432/housing?schema=public
+      HOST: 0.0.0.0
+      PORT: 3001
+      CBR_BASE_URL: ${CBR_BASE_URL:-https://www.cbr.ru/dataservice/}
+      CBR_TIMEOUT_MS: ${CBR_TIMEOUT_MS:-20000}
+      CBR_RETRIES: ${CBR_RETRIES:-2}
+      CBR_REGIONS: ${CBR_REGIONS:-22,41,33,54}
+      CBR_FROM_YEAR: ${CBR_FROM_YEAR:-2025}
+      SYNC_ON_START: ${SYNC_ON_START:-true}
+      SYNC_ENABLED: ${SYNC_ENABLED:-true}
+      SYNC_UTC_HOUR: ${SYNC_UTC_HOUR:-5}
+    ports:
+      - '127.0.0.1:3001:3001'
+    volumes:
+      - cbr_raw:/app/data/sync-raw
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test:
+        [
+          'CMD',
+          'node',
+          '-e',
+          "fetch('http://127.0.0.1:3001/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    restart: unless-stopped
+    stop_grace_period: 45s
+  frontend:
+    build:
+      context: .
+      target: frontend
+    ports:
+      - '127.0.0.1:8080:80'
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: housing
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-housing_local}
+      POSTGRES_DB: housing
+    ports:
+      - '127.0.0.1:55432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U housing -d housing']
+      interval: 5s
+      timeout: 5s
+      retries: 20
+volumes:
+  postgres_data:
+  cbr_raw:

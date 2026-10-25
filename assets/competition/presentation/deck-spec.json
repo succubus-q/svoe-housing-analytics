@@ -1,0 +1,1053 @@
+{
+  "slideWidth": 960,
+  "slideHeight": 540,
+  "font": "Arial",
+  "slides": [
+    {
+      "title": "Ипотечная аналитика для «Своего Жилья»",
+      "background": "123F36",
+      "notes": "Система автоматического сбора аналитических данных предназначена для будущего раздела аналитики портала «Своё Жильё». Ипотечный MVP охватывает шесть исходных метрик Банка России и четыре территориальных разреза. Полный цикл включает получение официальной статистики, нормализацию, хранение, расчёты и отображение.\n\nИсточники: docs/competition/project-summary.md; src/modules/cbr/cbr.catalog.ts.",
+      "items": [
+        {
+          "kind": "text",
+          "x": 48,
+          "y": 48,
+          "w": 830,
+          "h": 28,
+          "text": "КЕЙС РОССЕЛЬХОЗБАНКА",
+          "size": 14,
+          "color": "BCD6C9",
+          "bold": false,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 48,
+          "y": 142,
+          "w": 860,
+          "h": 140,
+          "text": "Ипотечная аналитика\nдля «Своего Жилья»",
+          "size": 46,
+          "color": "FFFFFF",
+          "bold": true,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 48,
+          "y": 329,
+          "w": 820,
+          "h": 74,
+          "text": "Автоматический сбор и подготовка\nданных Банка России",
+          "size": 24,
+          "color": "D4E4DC",
+          "bold": false,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 48,
+          "y": 465,
+          "w": 830,
+          "h": 28,
+          "text": "Конкурсный MVP · октябрь 2026",
+          "size": 14,
+          "color": "BCD6C9",
+          "bold": false,
+          "align": 1
+        }
+      ]
+    },
+    {
+      "title": "Данные ЦБ и задачи портала",
+      "background": "FFFFFF",
+      "notes": "Официальный API предоставляет статистику в нескольких публикациях. В ответах различаются обозначения периода, валютные колонки и единицы измерения. Сервис объединяет правила преобразования, хранит историю загрузок и предоставляет порталу единый аналитический контракт.\n\nИсточники: docs/cbr-api-research.md; src/modules/cbr/cbr.mapper.ts.",
+      "items": [
+        {
+          "kind": "text",
+          "x": 48,
+          "y": 38,
+          "w": 864,
+          "h": 78,
+          "text": "Данные ЦБ и задачи портала",
+          "size": 32,
+          "color": "123F36",
+          "bold": true,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 895,
+          "y": 511,
+          "w": 24,
+          "h": 18,
+          "text": "2",
+          "size": 11,
+          "color": "5B6D66",
+          "bold": false,
+          "align": 3
+        },
+        {
+          "kind": "text",
+          "x": 48,
+          "y": 122,
+          "w": 864,
+          "h": 60,
+          "text": "Порталу нужны сопоставимые показатели\nи регулярное обновление с контролем результата.",
+          "size": 22,
+          "color": "5B6D66",
+          "bold": false,
+          "align": 1
+        },
+        {
+          "kind": "table",
+          "x": 48,
+          "y": 218,
+          "w": 864,
+          "h": 235,
+          "rows": [
+            ["Внешний формат", "Контракт для портала"],
+            ["Разные публикации", "Единый набор метрик"],
+            ["Месяц и техническая дата", "Общий отчётный месяц"],
+            ["Валютные колонки и млн ₽", "RUB и согласованные единицы"],
+            ["Новые значения и исправления", "Загрузка с журналом результата"]
+          ],
+          "widths": [432, 432],
+          "size": 19,
+          "headerSize": 21
+        }
+      ]
+    },
+    {
+      "title": "Автоматизированный цикл обновления",
+      "background": "FFFFFF",
+      "notes": "Scheduler проверяет источник ежедневно. Возможны также стартовая загрузка и ручной запуск. Адаптер проверяет каталоги, mapper выбирает RUB, согласует период и переводит суммы в рубли. PostgreSQL хранит наблюдения с метаданными источника. Внутренний API отдаёт ряды и сводку dashboard.\n\nИсточники: src/modules/cbr/cbr.service.ts; src/modules/cbr/cbr.mapper.ts; src/modules/mortgage/mortgage.service.ts; src/modules/sync/sync.scheduler.ts.",
+      "items": [
+        {
+          "kind": "text",
+          "x": 48,
+          "y": 38,
+          "w": 864,
+          "h": 78,
+          "text": "Автоматизированный цикл обновления",
+          "size": 32,
+          "color": "123F36",
+          "bold": true,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 895,
+          "y": 511,
+          "w": 24,
+          "h": 18,
+          "text": "3",
+          "size": 11,
+          "color": "5B6D66",
+          "bold": false,
+          "align": 3
+        },
+        {
+          "kind": "text",
+          "x": 48,
+          "y": 122,
+          "w": 864,
+          "h": 50,
+          "text": "Ежедневная проверка источника, месячная статистика",
+          "size": 22,
+          "color": "5B6D66",
+          "bold": false,
+          "align": 1
+        },
+        {
+          "kind": "node",
+          "x": 48,
+          "y": 235,
+          "w": 144,
+          "h": 92,
+          "text": "Банк\nРоссии",
+          "size": 20,
+          "color": "123F36",
+          "fill": "ECF3EF"
+        },
+        {
+          "kind": "node",
+          "x": 228,
+          "y": 235,
+          "w": 144,
+          "h": 92,
+          "text": "Проверка\nи RUB",
+          "size": 20,
+          "color": "123F36",
+          "fill": "ECF3EF"
+        },
+        {
+          "kind": "node",
+          "x": 408,
+          "y": 235,
+          "w": 144,
+          "h": 92,
+          "text": "PostgreSQL",
+          "size": 20,
+          "color": "123F36",
+          "fill": "ECF3EF"
+        },
+        {
+          "kind": "node",
+          "x": 588,
+          "y": 235,
+          "w": 144,
+          "h": 92,
+          "text": "Наш API",
+          "size": 20,
+          "color": "123F36",
+          "fill": "ECF3EF"
+        },
+        {
+          "kind": "node",
+          "x": 768,
+          "y": 235,
+          "w": 144,
+          "h": 92,
+          "text": "Dashboard",
+          "size": 20,
+          "color": "123F36",
+          "fill": "ECF3EF"
+        },
+        {
+          "kind": "arrow",
+          "x": 192,
+          "y": 281,
+          "x2": 222,
+          "y2": 281,
+          "color": "17624E"
+        },
+        {
+          "kind": "arrow",
+          "x": 372,
+          "y": 281,
+          "x2": 402,
+          "y2": 281,
+          "color": "17624E"
+        },
+        {
+          "kind": "arrow",
+          "x": 552,
+          "y": 281,
+          "x2": 582,
+          "y2": 281,
+          "color": "17624E"
+        },
+        {
+          "kind": "arrow",
+          "x": 732,
+          "y": 281,
+          "x2": 762,
+          "y2": 281,
+          "color": "17624E"
+        },
+        {
+          "kind": "text",
+          "x": 48,
+          "y": 387,
+          "w": 864,
+          "h": 42,
+          "text": "Запуск по расписанию, при старте или вручную",
+          "size": 22,
+          "color": "192F29",
+          "bold": false,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 48,
+          "y": 441,
+          "w": 864,
+          "h": 42,
+          "text": "Сохраняются исходные ответы и метаданные",
+          "size": 22,
+          "color": "192F29",
+          "bold": false,
+          "align": 1
+        }
+      ]
+    },
+    {
+      "title": "Архитектура MVP",
+      "background": "FFFFFF",
+      "notes": "Backend работает как модульный монолит на Fastify и TypeScript. Модули интеграции, импорта и аналитики разделены по ответственности. Prisma обращается к PostgreSQL, nginx раздаёт React и проксирует API. Compose запускает три сервиса, Swagger описывает контракт.\n\nИсточники: src/app.ts; compose.yaml; deploy/nginx.conf; prisma/schema.prisma.",
+      "items": [
+        {
+          "kind": "text",
+          "x": 48,
+          "y": 38,
+          "w": 864,
+          "h": 78,
+          "text": "Архитектура MVP",
+          "size": 32,
+          "color": "123F36",
+          "bold": true,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 895,
+          "y": 511,
+          "w": 24,
+          "h": 18,
+          "text": "4",
+          "size": 11,
+          "color": "5B6D66",
+          "bold": false,
+          "align": 3
+        },
+        {
+          "kind": "node",
+          "x": 48,
+          "y": 177,
+          "w": 175,
+          "h": 90,
+          "text": "Банк России\nData Service",
+          "size": 19,
+          "color": "123F36",
+          "fill": "ECF3EF"
+        },
+        {
+          "kind": "node",
+          "x": 281,
+          "y": 158,
+          "w": 366,
+          "h": 132,
+          "text": "",
+          "size": 23,
+          "color": "123F36",
+          "fill": "ECF3EF"
+        },
+        {
+          "kind": "text",
+          "x": 299,
+          "y": 170,
+          "w": 330,
+          "h": 33,
+          "text": "Fastify + TypeScript",
+          "size": 23,
+          "color": "123F36",
+          "bold": true,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 299,
+          "y": 208,
+          "w": 330,
+          "h": 29,
+          "text": "CBR · Sync · Mortgage · Analytics",
+          "size": 17,
+          "color": "123F36",
+          "bold": false,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 299,
+          "y": 249,
+          "w": 330,
+          "h": 29,
+          "text": "Scheduler и ручной запуск",
+          "size": 17,
+          "color": "123F36",
+          "bold": false,
+          "align": 1
+        },
+        {
+          "kind": "node",
+          "x": 705,
+          "y": 177,
+          "w": 207,
+          "h": 90,
+          "text": "PostgreSQL\nPrisma · SyncLog",
+          "size": 19,
+          "color": "123F36",
+          "fill": "ECF3EF"
+        },
+        {
+          "kind": "arrow",
+          "x": 223,
+          "y": 222,
+          "x2": 274,
+          "y2": 222,
+          "color": "17624E"
+        },
+        {
+          "kind": "arrow",
+          "x": 647,
+          "y": 222,
+          "x2": 698,
+          "y2": 222,
+          "color": "17624E"
+        },
+        {
+          "kind": "node",
+          "x": 281,
+          "y": 368,
+          "w": 180,
+          "h": 73,
+          "text": "nginx\nproxy",
+          "size": 20,
+          "color": "123F36",
+          "fill": "ECF3EF"
+        },
+        {
+          "kind": "node",
+          "x": 564,
+          "y": 368,
+          "w": 230,
+          "h": 73,
+          "text": "React dashboard",
+          "size": 20,
+          "color": "123F36",
+          "fill": "ECF3EF"
+        },
+        {
+          "kind": "arrow",
+          "x": 371,
+          "y": 296,
+          "x2": 371,
+          "y2": 361,
+          "color": "17624E"
+        },
+        {
+          "kind": "arrow",
+          "x": 461,
+          "y": 404,
+          "x2": 557,
+          "y2": 404,
+          "color": "17624E"
+        },
+        {
+          "kind": "text",
+          "x": 48,
+          "y": 470,
+          "w": 864,
+          "h": 34,
+          "text": "Swagger описывает API. Docker Compose запускает три сервиса.",
+          "size": 19,
+          "color": "5B6D66",
+          "bold": false,
+          "align": 1
+        }
+      ]
+    },
+    {
+      "title": "Правила интеграции с Банком России",
+      "background": "FFFFFF",
+      "notes": "Рабочий импорт получает количество, объём, срок, задолженность и просрочку из публикации 21, ставку — из 15/34. Выдачи за январь имеют техническую дату первого февраля. Остаток на первое февраля относится к концу января. Mapper проверяет подпись и дату, сохраняет исходную дату, выбирает рублёвую колонку 36 и переводит суммы из миллионов рублей в рубли.\n\nИсточники: docs/competition/api-integration.md; data/samples/mortgage-count.json; data/samples/mortgage-debt.json; src/modules/cbr/cbr.mapper.ts.",
+      "items": [
+        {
+          "kind": "text",
+          "x": 48,
+          "y": 38,
+          "w": 864,
+          "h": 78,
+          "text": "Правила интеграции с Банком России",
+          "size": 32,
+          "color": "123F36",
+          "bold": true,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 895,
+          "y": 511,
+          "w": 24,
+          "h": 18,
+          "text": "5",
+          "size": 11,
+          "color": "5B6D66",
+          "bold": false,
+          "align": 3
+        },
+        {
+          "kind": "text",
+          "x": 48,
+          "y": 122,
+          "w": 864,
+          "h": 52,
+          "text": "Шесть метрик и четыре территориальных разреза",
+          "size": 22,
+          "color": "5B6D66",
+          "bold": false,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 48,
+          "y": 220,
+          "w": 400,
+          "h": 42,
+          "text": "Выдачи за январь",
+          "size": 25,
+          "color": "123F36",
+          "bold": true,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 48,
+          "y": 274,
+          "w": 400,
+          "h": 35,
+          "text": "Техническая дата: 01.02.2026",
+          "size": 19,
+          "color": "5B6D66",
+          "bold": false,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 48,
+          "y": 320,
+          "w": 400,
+          "h": 42,
+          "text": "Отчётный месяц: 2026-01",
+          "size": 23,
+          "color": "17624E",
+          "bold": true,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 514,
+          "y": 220,
+          "w": 398,
+          "h": 42,
+          "text": "Остаток на 1 февраля",
+          "size": 25,
+          "color": "123F36",
+          "bold": true,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 514,
+          "y": 274,
+          "w": 398,
+          "h": 35,
+          "text": "Состояние на конец января",
+          "size": 19,
+          "color": "5B6D66",
+          "bold": false,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 514,
+          "y": 320,
+          "w": 398,
+          "h": 42,
+          "text": "Исходная дата сохранена",
+          "size": 23,
+          "color": "17624E",
+          "bold": true,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 48,
+          "y": 410,
+          "w": 864,
+          "h": 40,
+          "text": "Только рублёвая колонка 36",
+          "size": 22,
+          "color": "192F29",
+          "bold": false,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 48,
+          "y": 455,
+          "w": 864,
+          "h": 40,
+          "text": "Суммы: млн ₽ × 1 000 000 = ₽",
+          "size": 22,
+          "color": "192F29",
+          "bold": false,
+          "align": 1
+        }
+      ]
+    },
+    {
+      "title": "Dashboard и аналитика",
+      "background": "FFFFFF",
+      "notes": "Работающий dashboard локального Compose-стенда. На скриншоте выбраны Российская Федерация и август 2026. Видны фильтры, карточки, графики и начало месячной таблицы с кнопкой CSV. Карточки показывают MoM, а блок динамики объёма выдач также показывает YoY. В API годовые сравнения доступны для всех метрик. Скриншот получен 25.10.2026 без изменения данных интерфейса.\n\nИсточники: assets/competition/screenshots/01-dashboard-rf.png; frontend/src/App.tsx; src/modules/mortgage/mortgage.service.ts.",
+      "items": [
+        {
+          "kind": "text",
+          "x": 48,
+          "y": 38,
+          "w": 864,
+          "h": 60,
+          "text": "Dashboard и аналитика",
+          "size": 32,
+          "color": "123F36",
+          "bold": true,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 895,
+          "y": 511,
+          "w": 24,
+          "h": 18,
+          "text": "6",
+          "size": 11,
+          "color": "5B6D66",
+          "bold": false,
+          "align": 3
+        },
+        {
+          "kind": "image",
+          "path": "assets/competition/screenshots/01-dashboard-rf.png",
+          "x": 48,
+          "y": 120,
+          "w": 640,
+          "h": 400
+        },
+        {
+          "kind": "text",
+          "x": 730,
+          "y": 180,
+          "w": 182,
+          "h": 78,
+          "text": "Выбор региона\nи периода",
+          "size": 21,
+          "color": "17624E",
+          "bold": true,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 730,
+          "y": 300,
+          "w": 182,
+          "h": 62,
+          "text": "MoM / YoY",
+          "size": 21,
+          "color": "17624E",
+          "bold": true,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 730,
+          "y": 410,
+          "w": 182,
+          "h": 70,
+          "text": "Выгрузка CSV",
+          "size": 21,
+          "color": "17624E",
+          "bold": true,
+          "align": 1
+        }
+      ]
+    },
+    {
+      "title": "Надёжность синхронизации",
+      "background": "FFFFFF",
+      "notes": "Repository сравнивает значения и метаданные по региону, месяцу и метрике. Неизменившаяся запись увеличивает skipped, новая вставляется, исправленная обновляется. PostgreSQL разрешает только один RUNNING. Heartbeat продлевает lease, перед атомарной записью повторно проверяется владелец. После аварии восстановление происходит при следующем запуске после истечения lease.\n\nИсточники: src/modules/sync/sync.service.ts; src/modules/mortgage/mortgage.repository.ts; tests/integration/sync.test.ts.",
+      "items": [
+        {
+          "kind": "text",
+          "x": 48,
+          "y": 38,
+          "w": 864,
+          "h": 78,
+          "text": "Надёжность синхронизации",
+          "size": 32,
+          "color": "123F36",
+          "bold": true,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 895,
+          "y": 511,
+          "w": 24,
+          "h": 18,
+          "text": "7",
+          "size": 11,
+          "color": "5B6D66",
+          "bold": false,
+          "align": 3
+        },
+        {
+          "kind": "node",
+          "x": 48,
+          "y": 157,
+          "w": 225,
+          "h": 82,
+          "text": "Процесс A\nполучает lease",
+          "size": 21,
+          "color": "123F36",
+          "fill": "ECF3EF"
+        },
+        {
+          "kind": "node",
+          "x": 370,
+          "y": 157,
+          "w": 220,
+          "h": 82,
+          "text": "PostgreSQL\nодин RUNNING",
+          "size": 21,
+          "color": "123F36",
+          "fill": "ECF3EF"
+        },
+        {
+          "kind": "node",
+          "x": 687,
+          "y": 157,
+          "w": 225,
+          "h": 82,
+          "text": "Процесс B\nHTTP 409",
+          "size": 21,
+          "color": "A66535",
+          "fill": "F7F0E9"
+        },
+        {
+          "kind": "arrow",
+          "x": 273,
+          "y": 198,
+          "x2": 363,
+          "y2": 198,
+          "color": "17624E"
+        },
+        {
+          "kind": "arrow",
+          "x": 680,
+          "y": 198,
+          "x2": 597,
+          "y2": 198,
+          "color": "A66535"
+        },
+        {
+          "kind": "text",
+          "x": 48,
+          "y": 295,
+          "w": 420,
+          "h": 39,
+          "text": "Повторная загрузка",
+          "size": 24,
+          "color": "17624E",
+          "bold": true,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 48,
+          "y": 348,
+          "w": 420,
+          "h": 58,
+          "text": "Upsert по региону,\nмесяцу и метрике",
+          "size": 20,
+          "color": "192F29",
+          "bold": false,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 48,
+          "y": 421,
+          "w": 420,
+          "h": 52,
+          "text": "SyncLog хранит\nстатус и счётчики",
+          "size": 20,
+          "color": "192F29",
+          "bold": false,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 514,
+          "y": 295,
+          "w": 398,
+          "h": 39,
+          "text": "После аварии",
+          "size": 24,
+          "color": "17624E",
+          "bold": true,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 514,
+          "y": 348,
+          "w": 398,
+          "h": 58,
+          "text": "Heartbeat прекращается,\nlease истекает",
+          "size": 20,
+          "color": "192F29",
+          "bold": false,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 514,
+          "y": 421,
+          "w": 398,
+          "h": 59,
+          "text": "Следующий запуск\nвосстанавливает импорт",
+          "size": 20,
+          "color": "192F29",
+          "bold": false,
+          "align": 1
+        }
+      ]
+    },
+    {
+      "title": "Проверки и реальные результаты",
+      "background": "ECF3EF",
+      "notes": "В ревью от 21.10.2026 прошли 14 unit-тестов и 9 интеграционных тестов на PostgreSQL, включая два OS-процесса, аварийное завершение и восстановление. Первый импорт в отдельном чистом Compose-стенде: received 1280, inserted 480, updated 0, skipped 800. Повторный: received 1280, inserted 0, updated 0, skipped 1280. После каждого импорта в БД 480 наблюдений. Проверка ключей не обнаружила дублей. Raw содержит валютные колонки, поэтому received отличается от количества сохранённых наблюдений.\n\nИсточники: docs/final-review.md; docs/competition/testing.md.",
+      "items": [
+        {
+          "kind": "text",
+          "x": 48,
+          "y": 38,
+          "w": 864,
+          "h": 78,
+          "text": "Проверки и реальные результаты",
+          "size": 32,
+          "color": "123F36",
+          "bold": true,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 895,
+          "y": 511,
+          "w": 24,
+          "h": 18,
+          "text": "8",
+          "size": 11,
+          "color": "5B6D66",
+          "bold": false,
+          "align": 3
+        },
+        {
+          "kind": "text",
+          "x": 48,
+          "y": 139,
+          "w": 390,
+          "h": 48,
+          "text": "14 unit-тестов",
+          "size": 30,
+          "color": "17624E",
+          "bold": true,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 480,
+          "y": 139,
+          "w": 432,
+          "h": 48,
+          "text": "9 integration-тестов",
+          "size": 30,
+          "color": "17624E",
+          "bold": true,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 48,
+          "y": 201,
+          "w": 864,
+          "h": 35,
+          "text": "PostgreSQL, два процесса и аварийное завершение",
+          "size": 20,
+          "color": "5B6D66",
+          "bold": false,
+          "align": 1
+        },
+        {
+          "kind": "table",
+          "x": 48,
+          "y": 270,
+          "w": 864,
+          "h": 132,
+          "rows": [
+            ["Импорт", "Получено", "Вставлено", "Обновлено", "Пропущено", "Записей\nв БД"],
+            ["Первый", "1280", "480", "0", "800", "480"],
+            ["Повторный", "1280", "0", "0", "1280", "480"]
+          ],
+          "widths": [180, 130, 130, 130, 130, 164],
+          "size": 19,
+          "headerSize": 16
+        },
+        {
+          "kind": "text",
+          "x": 48,
+          "y": 437,
+          "w": 864,
+          "h": 42,
+          "text": "480 наблюдений после обоих импортов",
+          "size": 25,
+          "color": "17624E",
+          "bold": true,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 48,
+          "y": 480,
+          "w": 864,
+          "h": 29,
+          "text": "Дубли по (region, period, metric) отсутствуют",
+          "size": 18,
+          "color": "5B6D66",
+          "bold": false,
+          "align": 1
+        }
+      ]
+    },
+    {
+      "title": "Результат MVP и следующий этап",
+      "background": "FFFFFF",
+      "notes": "Ипотечный MVP предоставляет воспроизводимый цикл обработки официальной статистики и единый API для будущего раздела портала. Перед публичной эксплуатацией необходимы авторизация ручного sync, мониторинг и браузерные проверки. Расширение регионов, истории и остальных банковских показателей требует проверки источников и методологии.\n\nИсточники: docs/competition/project-summary.md; docs/competition/limitations.md.",
+      "items": [
+        {
+          "kind": "text",
+          "x": 48,
+          "y": 38,
+          "w": 864,
+          "h": 78,
+          "text": "Результат MVP и следующий этап",
+          "size": 32,
+          "color": "123F36",
+          "bold": true,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 895,
+          "y": 511,
+          "w": 24,
+          "h": 18,
+          "text": "9",
+          "size": 11,
+          "color": "5B6D66",
+          "bold": false,
+          "align": 3
+        },
+        {
+          "kind": "text",
+          "x": 48,
+          "y": 162,
+          "w": 400,
+          "h": 42,
+          "text": "Готово",
+          "size": 26,
+          "color": "17624E",
+          "bold": true,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 48,
+          "y": 225,
+          "w": 400,
+          "h": 57,
+          "text": "Полный ипотечный цикл",
+          "size": 22,
+          "color": "192F29",
+          "bold": false,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 48,
+          "y": 287,
+          "w": 400,
+          "h": 57,
+          "text": "Единый API для портала",
+          "size": 22,
+          "color": "192F29",
+          "bold": false,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 48,
+          "y": 349,
+          "w": 400,
+          "h": 61,
+          "text": "Шесть метрик,\nчетыре разреза, RUB",
+          "size": 22,
+          "color": "192F29",
+          "bold": false,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 48,
+          "y": 427,
+          "w": 400,
+          "h": 57,
+          "text": "Повторный импорт без дублей",
+          "size": 22,
+          "color": "192F29",
+          "bold": false,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 520,
+          "y": 162,
+          "w": 392,
+          "h": 42,
+          "text": "Перед production",
+          "size": 26,
+          "color": "17624E",
+          "bold": true,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 520,
+          "y": 225,
+          "w": 392,
+          "h": 57,
+          "text": "Авторизация ручного sync",
+          "size": 22,
+          "color": "192F29",
+          "bold": false,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 520,
+          "y": 287,
+          "w": 392,
+          "h": 65,
+          "text": "Мониторинг\nи browser E2E",
+          "size": 22,
+          "color": "192F29",
+          "bold": false,
+          "align": 1
+        },
+        {
+          "kind": "text",
+          "x": 520,
+          "y": 365,
+          "w": 392,
+          "h": 65,
+          "text": "Расширение регионов\nи истории",
+          "size": 22,
+          "color": "192F29",
+          "bold": false,
+          "align": 1
+        }
+      ]
+    }
+  ]
+}

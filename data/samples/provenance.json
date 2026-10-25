@@ -1,0 +1,113 @@
+[
+  {
+    "file": "mortgage-count.json",
+    "source": "LIVE_CBR_API",
+    "fetchedAt": "2026-10-20T19:52:15.281Z",
+    "query": {
+      "publicationId": 21,
+      "datasetId": 44,
+      "measureId": 22,
+      "y1": 2026,
+      "y2": 2026
+    },
+    "sourceUpdatedAt": "2026-10-01T00:00:00",
+    "rows": 24,
+    "sha256": "414b1cba4b81f10a95d22fa9f51b75be38370808887858d24f727f9f84fa8647",
+    "evidence": "../evidence/mortgage-count/manifest.json"
+  },
+  {
+    "file": "mortgage-rate.json",
+    "source": "LIVE_CBR_API",
+    "fetchedAt": "2026-10-20T19:53:14.901Z",
+    "query": {
+      "publicationId": 14,
+      "datasetId": 29,
+      "y1": 2026,
+      "y2": 2026
+    },
+    "sourceUpdatedAt": "2026-10-01T00:00:00",
+    "rows": 16,
+    "sha256": "dfde105c9cff35ddb948bcdd8cbe06175beb27922d11c1651170afaba38f080f",
+    "evidence": "../evidence/mortgage-rate/manifest.json"
+  },
+  {
+    "file": "mortgage-volume.json",
+    "source": "LIVE_CBR_API",
+    "fetchedAt": "2026-10-20T19:55:45.440Z",
+    "query": {
+      "publicationId": 21,
+      "datasetId": 45,
+      "measureId": 22,
+      "y1": 2026,
+      "y2": 2026
+    },
+    "sourceUpdatedAt": "2026-10-01T00:00:00",
+    "rows": 24,
+    "sha256": "282febe79bf0a64211eda04afb39fa0ec8fa8e7005034dad1d73e9a2336e7568",
+    "evidence": "../evidence/mortgage-volume/manifest.json"
+  },
+  {
+    "file": "mortgage-debt.json",
+    "source": "LIVE_CBR_API",
+    "fetchedAt": "2026-10-20T19:55:46.870Z",
+    "query": {
+      "publicationId": 21,
+      "datasetId": 46,
+      "measureId": 22,
+      "y1": 2026,
+      "y2": 2026
+    },
+    "sourceUpdatedAt": "2026-10-01T00:00:00",
+    "rows": 24,
+    "sha256": "f1458968d3a45dbc3241b2d44a98c753f479c5114203176021e440d51e2011df",
+    "evidence": "../evidence/mortgage-debt/manifest.json"
+  },
+  {
+    "file": "mortgage-overdue-debt.json",
+    "source": "LIVE_CBR_API",
+    "fetchedAt": "2026-10-20T19:55:48.394Z",
+    "query": {
+      "publicationId": 21,
+      "datasetId": 47,
+      "measureId": 22,
+      "y1": 2026,
+      "y2": 2026
+    },
+    "sourceUpdatedAt": "2026-10-01T00:00:00",
+    "rows": 24,
+    "sha256": "1b4fbe4a76aec08711553dd01a7efaa3be8dbd462c3ef93f4167d896c9aaf04e",
+    "evidence": "../evidence/mortgage-overdue-debt/manifest.json"
+  },
+  {
+    "file": "mortgage-term.json",
+    "source": "LIVE_CBR_API",
+    "fetchedAt": "2026-10-20T19:55:50.000Z",
+    "query": {
+      "publicationId": 21,
+      "datasetId": 48,
+      "measureId": 22,
+      "y1": 2026,
+      "y2": 2026
+    },
+    "sourceUpdatedAt": "2026-10-01T00:00:00",
+    "rows": 16,
+    "sha256": "60a0bb47fc5d27aa4668e7721b36afe511ebb9e40d869dfe66ecb447ea5ec624",
+    "evidence": "../evidence/mortgage-term/manifest.json"
+  },
+  {
+    "file": "mortgage-rate-moscow.json",
+    "source": "LIVE_CBR_API",
+    "fetchedAt": "2026-10-20T19:56:24.223Z",
+    "query": {
+      "publicationId": 15,
+      "datasetId": 34,
+      "measureId": 41,
+      "y1": 2026,
+      "y2": 2026
+    },
+    "sourceUpdatedAt": "2026-10-01T00:00:00",
+    "rows": 16,
+    "sha256": "1af0f102ea6a865078ebf7a35536519457778c0841ee9948f2da2903d49663de",
+    "evidence": "../evidence/mortgage-rate-moscow/manifest.json"
+  }
+]

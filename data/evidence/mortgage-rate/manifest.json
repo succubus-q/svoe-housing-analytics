@@ -1,0 +1,214 @@
+{
+  "runId": "2026-10-20T19-53-14-900Z-21776",
+  "startedAt": "2026-10-20T19:53:14.901Z",
+  "status": "SUCCESS",
+  "source": "LIVE_CBR_API",
+  "baseUrl": "https://www.cbr.ru/dataservice/",
+  "requests": [
+    {
+      "endpoint": "publications",
+      "query": {},
+      "attempt": 1,
+      "startedAt": "2026-10-20T19:53:14.901Z",
+      "durationMs": 119,
+      "status": 200,
+      "contentType": "application/json",
+      "error": null,
+      "bodyFile": "001-publications-attempt-1.json"
+    },
+    {
+      "endpoint": "datasets",
+      "query": {
+        "publicationId": 14
+      },
+      "attempt": 1,
+      "startedAt": "2026-10-20T19:53:15.056Z",
+      "durationMs": 36,
+      "status": 200,
+      "contentType": "application/json",
+      "error": null,
+      "bodyFile": "002-datasets-attempt-1.json"
+    },
+    {
+      "endpoint": "datasetsEx",
+      "query": {
+        "publicationId": 14
+      },
+      "attempt": 1,
+      "startedAt": "2026-10-20T19:53:15.102Z",
+      "durationMs": 44,
+      "status": 200,
+      "contentType": "application/json",
+      "error": null,
+      "bodyFile": "003-datasetsEx-attempt-1.json"
+    },
+    {
+      "endpoint": "DatasetDescription",
+      "query": {
+        "datasetId": 29
+      },
+      "attempt": 1,
+      "startedAt": "2026-10-20T19:53:15.164Z",
+      "durationMs": 15,
+      "status": 200,
+      "contentType": "application/json",
+      "error": null,
+      "bodyFile": "004-DatasetDescription-attempt-1.json"
+    },
+    {
+      "endpoint": "years",
+      "query": {
+        "datasetId": 29
+      },
+      "attempt": 1,
+      "startedAt": "2026-10-20T19:53:15.183Z",
+      "durationMs": 37,
+      "status": 200,
+      "contentType": "application/json",
+      "error": null,
+      "bodyFile": "005-years-attempt-1.json"
+    },
+    {
+      "endpoint": "data",
+      "query": {
+        "publicationId": 14,
+        "datasetId": 29,
+        "y1": 2026,
+        "y2": 2026
+      },
+      "attempt": 1,
+      "startedAt": "2026-10-20T19:53:15.237Z",
+      "durationMs": 82,
+      "status": 200,
+      "contentType": "application/json",
+      "error": null,
+      "bodyFile": "006-data-attempt-1.json"
+    }
+  ],
+  "publication": {
+    "id": 14,
+    "parent_id": 13,
+    "category_name": "В целом по Российской Федерации",
+    "NoActive": 0
+  },
+  "dataset": {
+    "id": 29,
+    "parent_id": -1,
+    "name": "Ставки по ипотечным жилищным кредитам",
+    "full_name": "Средневзвешенная ставка по ипотечным жилищным кредитам, предоставленным физическим лицам-резидентам",
+    "type": 2,
+    "reporting": "period",
+    "link": "/statistics/bank_sector/mortgage/#a_62949",
+    "updated_time": "2026-10-01T00:00:00"
+  },
+  "years": [
+    {
+      "FromYear": 2017,
+      "ToYear": 2026
+    }
+  ],
+  "output": "../../samples/mortgage-rate.json",
+  "query": {
+    "publicationId": 14,
+    "datasetId": 29,
+    "y1": 2026,
+    "y2": 2026
+  },
+  "rowCount": 16,
+  "summary": {
+    "periodicities": [
+      "month"
+    ],
+    "units": [
+      {
+        "id": 1,
+        "val": "% годовых"
+      },
+      {
+        "id": 2,
+        "val": "%"
+      },
+      {
+        "id": 3,
+        "val": "млрд руб."
+      },
+      {
+        "id": 4,
+        "val": "млн долларов США"
+      },
+      {
+        "id": 5,
+        "val": "месяцев"
+      },
+      {
+        "id": 6,
+        "val": "млн руб."
+      },
+      {
+        "id": 7,
+        "val": "единиц"
+      },
+      {
+        "id": 8,
+        "val": "число опрошенных"
+      },
+      {
+        "id": 9,
+        "val": "пунктов"
+      },
+      {
+        "id": 10,
+        "val": "руб."
+      }
+    ],
+    "headerData": [
+      {
+        "id": 36,
+        "elname": "В рублях"
+      },
+      {
+        "id": 40,
+        "elname": "В иностранной валюте"
+      }
+    ],
+    "firstRows": [
+      {
+        "colId": 36,
+        "element_id": 36,
+        "measure_id": null,
+        "unit_id": 1,
+        "obs_val": 7.64,
+        "rowId": 409,
+        "dt": "Январь 2026",
+        "periodicity": "month",
+        "date": "2026-02-01T00:00:00",
+        "digits": 2
+      },
+      {
+        "colId": 40,
+        "element_id": 40,
+        "measure_id": null,
+        "unit_id": 1,
+        "obs_val": 0,
+        "rowId": 409,
+        "dt": "Январь 2026",
+        "periodicity": "month",
+        "date": "2026-02-01T00:00:00",
+        "digits": 2
+      },
+      {
+        "colId": 40,
+        "element_id": 40,
+        "measure_id": null,
+        "unit_id": 1,
+        "obs_val": 0,
+        "rowId": 410,
+        "dt": "Февраль 2026",
+        "periodicity": "month",
+        "date": "2026-03-01T00:00:00",
+        "digits": 2
+      }
+    ]
+  },
+  "finishedAt": "2026-10-20T19:53:15.329Z"
+}

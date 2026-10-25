@@ -1,0 +1,17 @@
+**/node_modules export-ignore
+.env export-ignore
+.env.* export-ignore
+.env.example -export-ignore
+**/dist export-ignore
+/coverage export-ignore
+/release export-ignore
+/artifacts export-ignore
+/.work export-ignore
+/.cache export-ignore
+/data/inspections export-ignore
+/data/sync-raw export-ignore
+/data/logs export-ignore
+/data/*.json export-ignore
+*.log export-ignore
+*.tmp export-ignore
+*.tsbuildinfo export-ignore

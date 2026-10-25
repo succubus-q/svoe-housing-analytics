@@ -1,0 +1,20 @@
+> svoe-housing-analytics@0.1.0 build
+> npm run typecheck && npm run build --workspace frontend
+
+
+> svoe-housing-analytics@0.1.0 typecheck
+> tsc --noEmit
+
+
+> @housing/frontend@0.1.0 build
+> tsc --noEmit && vite build
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 1581 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.78 kB │ gzip:  0.52 kB
+dist/assets/index-5Z3Sm5wr.css   12.06 kB │ gzip:  3.50 kB
+dist/assets/index-CBiu2tnL.js   243.31 kB │ gzip: 76.86 kB
+✓ built in 2.52s

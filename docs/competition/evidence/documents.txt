@@ -1,0 +1,2 @@
+Competition documents OK: 14 required files, 9 slides, >=25 answers, 115 local links, 4 Mermaid sources.
+Mermaid source consistency checked. Rendering, screenshot capture and binary presentation export are not covered.

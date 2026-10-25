@@ -1,0 +1,20 @@
+sequenceDiagram
+  participant A as Процесс A
+  participant DB as PostgreSQL
+  participant B as Процесс B
+  participant CBR as Банк России
+  A->>DB: Claim в короткой транзакции
+  DB-->>A: RUNNING A и lease 60 секунд
+  A->>CBR: HTTP вне транзакции
+  B->>DB: Claim с advisory guard
+  DB-->>B: Действующий RUNNING A
+  B-->>B: SyncBusyError, HTTP 409
+  loop Каждые 10 секунд во время получения
+    A->>DB: Heartbeat по clock_timestamp
+  end
+  CBR-->>A: Данные
+  A->>A: Остановить heartbeat
+  A->>DB: Write transaction, advisory lock, owner FOR UPDATE
+  A->>DB: Upsert и SUCCESS либо PARTIAL
+  DB-->>A: Commit
+  Note over A,DB: При crash следующий запуск восстанавливает истёкший RUNNING

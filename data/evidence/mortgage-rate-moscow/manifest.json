@@ -1,0 +1,236 @@
+{
+  "runId": "2026-10-20T19-56-24-222Z-24932",
+  "startedAt": "2026-10-20T19:56:24.223Z",
+  "status": "SUCCESS",
+  "source": "LIVE_CBR_API",
+  "baseUrl": "https://www.cbr.ru/dataservice/",
+  "requests": [
+    {
+      "endpoint": "publications",
+      "query": {},
+      "attempt": 1,
+      "startedAt": "2026-10-20T19:56:24.223Z",
+      "durationMs": 108,
+      "status": 200,
+      "contentType": "application/json",
+      "error": null,
+      "bodyFile": "001-publications-attempt-1.json"
+    },
+    {
+      "endpoint": "datasets",
+      "query": {
+        "publicationId": 15
+      },
+      "attempt": 1,
+      "startedAt": "2026-10-20T19:56:24.343Z",
+      "durationMs": 19,
+      "status": 200,
+      "contentType": "application/json",
+      "error": null,
+      "bodyFile": "002-datasets-attempt-1.json"
+    },
+    {
+      "endpoint": "datasetsEx",
+      "query": {
+        "publicationId": 15
+      },
+      "attempt": 1,
+      "startedAt": "2026-10-20T19:56:24.373Z",
+      "durationMs": 64,
+      "status": 200,
+      "contentType": "application/json",
+      "error": null,
+      "bodyFile": "003-datasetsEx-attempt-1.json"
+    },
+    {
+      "endpoint": "DatasetDescription",
+      "query": {
+        "datasetId": 34
+      },
+      "attempt": 1,
+      "startedAt": "2026-10-20T19:56:24.441Z",
+      "durationMs": 25,
+      "status": 200,
+      "contentType": "application/json",
+      "error": null,
+      "bodyFile": "004-DatasetDescription-attempt-1.json"
+    },
+    {
+      "endpoint": "measures",
+      "query": {
+        "datasetId": 34
+      },
+      "attempt": 1,
+      "startedAt": "2026-10-20T19:56:24.474Z",
+      "durationMs": 39,
+      "status": 200,
+      "contentType": "application/json",
+      "error": null,
+      "bodyFile": "005-measures-attempt-1.json"
+    },
+    {
+      "endpoint": "years",
+      "query": {
+        "datasetId": 34,
+        "measureId": 41
+      },
+      "attempt": 1,
+      "startedAt": "2026-10-20T19:56:24.520Z",
+      "durationMs": 30,
+      "status": 200,
+      "contentType": "application/json",
+      "error": null,
+      "bodyFile": "006-years-attempt-1.json"
+    },
+    {
+      "endpoint": "data",
+      "query": {
+        "publicationId": 15,
+        "datasetId": 34,
+        "measureId": 41,
+        "y1": 2026,
+        "y2": 2026
+      },
+      "attempt": 1,
+      "startedAt": "2026-10-20T19:56:24.552Z",
+      "durationMs": 175,
+      "status": 200,
+      "contentType": "application/json",
+      "error": null,
+      "bodyFile": "007-data-attempt-1.json"
+    }
+  ],
+  "publication": {
+    "id": 15,
+    "parent_id": 13,
+    "category_name": "В территориальном разрезе",
+    "NoActive": 0
+  },
+  "dataset": {
+    "id": 34,
+    "parent_id": -1,
+    "name": "Ставки по ипотечным жилищным кредитам",
+    "full_name": "Средневзвешенная ставка по ипотечным жилищным кредитам, предоставленным физическим лицам-резидентам",
+    "type": 1,
+    "reporting": "period",
+    "link": "/statistics/bank_sector/mortgage/#a_62962",
+    "updated_time": "2026-10-01T00:00:00"
+  },
+  "measure": {
+    "id": 41,
+    "parent_id": 23,
+    "name": "г. Москва",
+    "sort": 20
+  },
+  "years": [
+    {
+      "FromYear": 2019,
+      "ToYear": 2026
+    }
+  ],
+  "output": "../../samples/mortgage-rate-moscow.json",
+  "query": {
+    "publicationId": 15,
+    "datasetId": 34,
+    "measureId": 41,
+    "y1": 2026,
+    "y2": 2026
+  },
+  "rowCount": 16,
+  "summary": {
+    "periodicities": [
+      "month"
+    ],
+    "units": [
+      {
+        "id": 1,
+        "val": "% годовых"
+      },
+      {
+        "id": 2,
+        "val": "%"
+      },
+      {
+        "id": 3,
+        "val": "млрд руб."
+      },
+      {
+        "id": 4,
+        "val": "млн долларов США"
+      },
+      {
+        "id": 5,
+        "val": "месяцев"
+      },
+      {
+        "id": 6,
+        "val": "млн руб."
+      },
+      {
+        "id": 7,
+        "val": "единиц"
+      },
+      {
+        "id": 8,
+        "val": "число опрошенных"
+      },
+      {
+        "id": 9,
+        "val": "пунктов"
+      },
+      {
+        "id": 10,
+        "val": "руб."
+      }
+    ],
+    "headerData": [
+      {
+        "id": 36,
+        "elname": "В рублях"
+      },
+      {
+        "id": 40,
+        "elname": "В иностранной валюте"
+      }
+    ],
+    "firstRows": [
+      {
+        "colId": 36,
+        "element_id": 36,
+        "measure_id": 41,
+        "unit_id": 1,
+        "obs_val": 8.4,
+        "rowId": 409,
+        "dt": "Январь 2026",
+        "periodicity": "month",
+        "date": "2026-02-01T00:00:00",
+        "digits": 2
+      },
+      {
+        "colId": 40,
+        "element_id": 40,
+        "measure_id": 41,
+        "unit_id": 1,
+        "obs_val": 0,
+        "rowId": 409,
+        "dt": "Январь 2026",
+        "periodicity": "month",
+        "date": "2026-02-01T00:00:00",
+        "digits": 2
+      },
+      {
+        "colId": 40,
+        "element_id": 40,
+        "measure_id": 41,
+        "unit_id": 1,
+        "obs_val": 0,
+        "rowId": 410,
+        "dt": "Февраль 2026",
+        "periodicity": "month",
+        "date": "2026-03-01T00:00:00",
+        "digits": 2
+      }
+    ]
+  },
+  "finishedAt": "2026-10-20T19:56:24.746Z"
+}

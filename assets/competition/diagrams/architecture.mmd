@@ -1,0 +1,15 @@
+flowchart LR
+  CBR[Банк России Data Service] --> Client[CBR API Adapter]
+  Client --> Mapper[Нормализация и валидация]
+  Mapper --> Sync[SyncService]
+  Scheduler[Scheduler ежедневно] --> Sync
+  Manual[POST /api/v1/sync/run] --> Sync
+  Sync <--> Guard[Lease и heartbeat]
+  Guard <--> DB[(PostgreSQL)]
+  Sync --> Repo[Repository upsert]
+  Repo --> DB
+  Sync --> Log[SyncLog в PostgreSQL]
+  DB --> API[Analytics API]
+  API --> Nginx[nginx proxy]
+  Nginx --> UI[React dashboard]
+  OpenAPI[Swagger /docs и /docs/json] --- API

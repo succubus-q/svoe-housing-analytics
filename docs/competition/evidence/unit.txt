@@ -1,0 +1,26 @@
+> svoe-housing-analytics@0.1.0 test
+> node --test tests/*.test.ts
+
+✔ MoM/YoY: relative changes, missing comparison and zero denominator (3.4868ms)
+✔ average loan uses volume already normalized to rubles (0.345ms)
+✔ client retries 429 and 503; saves every exact body before returning (33.0532ms)
+✔ 400 and HTTP 200 with HTML are saved and are not retried (2.2024ms)
+✔ network errors have bounded retries and do not become an empty success (0.8044ms)
+dataset: совпадений 2. Уточните поиск или укажите ID.
+✔ timeout also covers response body, not only response headers (32.1669ms)
+✔ archive write error is surfaced without retrying HTTP (0.9689ms)
+✔ unknown IDs are rejected; ambiguous search never selects the first match (0.8207ms)
+✔ runtime contracts reject malformed catalogues and invalid year ranges (0.6151ms)
+✔ live CBR fixture retains month label, next-month date and currency columns (3.4397ms)
+✔ constructor rejects insecure URLs and credentials (0.4651ms)
+✔ all six reviewed metric definitions match saved live catalogues, units and columns (13.4828ms)
+✔ mapper normalizes all six live snapshots to rubles and the reporting month (16.7688ms)
+✔ mapper rejects invalid dates, units, mismatched month and non-finite/negative values (0.7144ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 312.6384

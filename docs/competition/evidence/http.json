@@ -1,0 +1,39 @@
+{
+  "checkedAtUtc": "2026-10-21T20:32:43.366Z",
+  "passed": true,
+  "results": [
+    {
+      "url": "http://localhost:3001/docs/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 873
+    },
+    {
+      "url": "http://localhost:3001/docs/static/swagger-ui-bundle.js",
+      "status": 200,
+      "bytes": 1526593
+    },
+    {
+      "url": "http://localhost:3001/docs/static/swagger-ui-standalone-preset.js",
+      "status": 200,
+      "bytes": 251800
+    },
+    {
+      "url": "http://localhost:3001/docs/static/swagger-initializer.js",
+      "status": 200,
+      "bytes": 7272
+    },
+    {
+      "url": "http://localhost:8080/health",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "bytes": 31
+    },
+    {
+      "url": "http://localhost:8080/docs/json",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "bytes": 7393
+    }
+  ]
+}

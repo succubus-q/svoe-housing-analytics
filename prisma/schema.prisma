@@ -1,0 +1,72 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Metric {
+  MORTGAGE_COUNT
+  MORTGAGE_VOLUME
+  AVERAGE_RATE
+  AVERAGE_TERM
+  DEBT
+  OVERDUE_DEBT
+}
+
+enum SyncStatus {
+  RUNNING
+  SUCCESS
+  PARTIAL
+  FAILED
+}
+
+model Region {
+  id           String                @id @default(cuid())
+  code         String                @unique
+  name         String
+  sourceId     Int                   @unique
+  parentCode   String?
+  observations MortgageObservation[]
+}
+
+model MortgageObservation {
+  id                  String   @id @default(cuid())
+  regionId            String
+  region              Region   @relation(fields: [regionId], references: [id])
+  period              DateTime @db.Date
+  metric              Metric
+  value               Decimal  @db.Decimal(24, 6)
+  unit                String
+  source              String
+  sourcePublicationId Int?
+  sourceDatasetId     Int?
+  sourceMeasureId     Int?
+  sourceUpdatedAt     DateTime?
+  sourcePeriodDate    DateTime? @db.Date
+  importedAt          DateTime @default(now())
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  @@unique([regionId, period, metric])
+  @@index([metric, period])
+}
+
+model SyncLog {
+  id              String     @id @default(cuid())
+  startedAt       DateTime   @default(now())
+  finishedAt      DateTime?
+  status          SyncStatus @default(RUNNING)
+  recordsReceived Int        @default(0)
+  recordsInserted Int        @default(0)
+  recordsUpdated  Int        @default(0)
+  recordsSkipped  Int        @default(0)
+  errorMessage    String?
+  issues          Json       @default("[]")
+  leaseExpiresAt  DateTime?  @db.Timestamptz(3)
+
+  // SQL migration also enforces a single RUNNING row with a partial unique index.
+  @@index([startedAt])
+}

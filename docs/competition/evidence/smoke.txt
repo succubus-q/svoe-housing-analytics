@@ -1,0 +1,21 @@
+> svoe-housing-analytics@0.1.0 smoke
+> node scripts/smoke.ts --sync
+
+CBR-22: summary/stats OK (2026-08)
+CBR-33: summary/stats OK (2026-08)
+CBR-41: summary/stats OK (2026-08)
+CBR-54: summary/stats OK (2026-08)
+Live sync + concurrent 409: {
+  id: 'cmvijyv4q000amw01dahvyewt',
+  status: 'SUCCESS',
+  startedAt: '2026-10-21T20:16:33.050Z',
+  finishedAt: '2026-10-21T20:16:48.372Z',
+  recordsReceived: 1280,
+  recordsInserted: 0,
+  recordsUpdated: 0,
+  recordsSkipped: 1280,
+  errorMessage: null,
+  issues: [],
+  leaseExpiresAt: null
+}
+Smoke OK: HTML, JS asset, nginx proxy, health, OpenAPI, regions, summaries and stats.

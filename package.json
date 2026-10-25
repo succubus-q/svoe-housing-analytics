@@ -1,0 +1,50 @@
+{
+  "name": "svoe-housing-analytics",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "frontend"
+  ],
+  "type": "module",
+  "description": "Исследование Data Service API Банка России для MVP ипотечной аналитики",
+  "engines": {
+    "node": ">=24.13.0"
+  },
+  "scripts": {
+    "dev": "node --env-file-if-exists=.env --watch src/server.ts",
+    "dev:frontend": "npm run dev --workspace frontend",
+    "build": "npm run typecheck && npm run build --workspace frontend",
+    "start": "node --env-file-if-exists=.env src/server.ts",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate deploy",
+    "inspect:cbr": "node --env-file-if-exists=.env scripts/inspect-cbr-api.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test tests/*.test.ts",
+    "test:integration": "node --env-file-if-exists=.env --test tests/integration/*.test.ts",
+    "smoke": "node scripts/smoke.ts",
+    "lint": "eslint .",
+    "format:check": "prettier --check .",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@prisma/client": "6.19.0",
+    "fastify": "^5.6.0",
+    "@fastify/swagger": "^9.5.0",
+    "@fastify/swagger-ui": "^6.1.2"
+  },
+  "overrides": {
+    "@prisma/config": {
+      "deepmerge-ts": "^8.0.0",
+      "effect": "^3.20.0"
+    }
+  },
+  "devDependencies": {
+    "prisma": "6.19.0",
+    "@eslint/js": "^9.39.0",
+    "@types/node": "^24.0.0",
+    "eslint": "^9.39.0",
+    "prettier": "^3.6.0",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.46.0"
+  }
+}

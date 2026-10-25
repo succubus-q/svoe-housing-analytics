@@ -1,0 +1,25 @@
+flowchart TD
+  Trigger[Scheduler или ручной запрос] --> Local{active в этом процессе?}
+  Local -- Да --> Busy[SyncBusyError: HTTP 409]
+  Local -- Нет --> Claim[Короткая claim transaction]
+  Claim --> Guard{advisory guard получен?}
+  Guard -- Нет --> Busy
+  Guard -- Да --> Lease{Есть живой RUNNING?}
+  Lease -- Да --> Busy
+  Lease -- Нет --> Recover[Истёкший RUNNING в FAILED]
+  Recover --> Start[Создать RUNNING с lease]
+  Start --> Fetch[HTTP и mapper вне транзакции]
+  Start -. Каждые 10 секунд .-> Beat[Heartbeat продлевает lease на 60 секунд]
+  Fetch --> Stop[Остановить и дождаться heartbeat]
+  Stop --> Write[Write transaction: advisory lock и owner FOR UPDATE]
+  Write --> Owner{Владение действительно?}
+  Owner -- Нет --> Fail[Попытка завершить свой RUNNING как FAILED]
+  Owner -- Да --> Persist[Upsert и SyncLog атомарно]
+  Persist --> Commit[Commit: SUCCESS, PARTIAL или пустой FAILED]
+  Persist -- SQL ошибка: rollback --> Fail
+  Fetch -- Общая ошибка --> StopError[Остановить и дождаться heartbeat после ошибки]
+  StopError --> Fail
+  Stop -- Потеря heartbeat --> Fail
+  Fail --> Db{БД доступна?}
+  Db -- Да --> Failed[FAILED без новых наблюдений]
+  Db -- Нет --> Aggregate[AggregateError, затем lease expiry и следующий claim]

@@ -1,0 +1,20 @@
+> svoe-housing-analytics@0.1.0 test:integration
+> node --env-file-if-exists=.env --test tests/integration/*.test.ts
+
+✔ real PostgreSQL: upsert inserts, skips unchanged, updates changed and remains unique (283.6072ms)
+✔ integration: /health checks the actual PostgreSQL connection (4863.4871ms)
+✔ HTTP/normalization runs outside a transaction; RUNNING is visible before data arrives (2193.2972ms)
+✔ HTTP failure finishes FAILED and releases ownership for the next import (87.3281ms)
+✔ PARTIAL, empty FAILED and idempotent SUCCESS preserve meaningful counters (127.0906ms)
+✔ actual SQL write failure rolls back regions/observations, then finalizes FAILED separately (67.059ms)
+✔ an expired/paused owner is fenced out after another process claims and commits (83.8538ms)
+✔ separate OS processes: heartbeat excludes a competitor; SIGKILL is recovered after expiry (3858.4645ms)
+✔ a competitor is rejected during atomic SQL write even after the lease deadline (2604.9641ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9766.5799

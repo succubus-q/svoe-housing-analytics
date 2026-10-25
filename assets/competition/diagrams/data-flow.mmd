@@ -1,0 +1,15 @@
+flowchart TD
+  Source[Официальный показатель] --> Raw[Raw response и metadata]
+  Raw --> Extract[RawData: obs_val и идентификаторы]
+  Extract --> Currency{colId равен 36?}
+  Currency -- Нет --> Skip[Пропуск иной валютной колонки]
+  Currency -- Да --> Period[Период из date с проверкой dt]
+  Period --> Region[Разрез CBR-measureId]
+  Region --> Metric[Метрика и единицы каталога]
+  Metric --> Valid{Валидация}
+  Valid -- Ошибка --> Issue[Skipped и issues]
+  Valid -- Успех --> Obs[MortgageObservation]
+  Obs --> Save[Сравнение и upsert]
+  Save --> DB[(PostgreSQL)]
+  DB --> API[stats и summary]
+  API --> UI[Dashboard]

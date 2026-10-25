@@ -1,0 +1,17 @@
+**/node_modules/
+.env
+.env.*
+!.env.example
+**/dist/
+coverage/
+/data/*
+!/data/samples/
+!/data/evidence/
+release/
+artifacts/
+.work/
+.cache/
+**/.vite/
+*.log
+*.tmp
+*.tsbuildinfo

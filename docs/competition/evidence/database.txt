@@ -1,0 +1,8 @@
+observations
+--------------
+          480
+(1 row)
+
+ regionId | period | metric | count
+----------+--------+--------+-------
+(0 rows)
